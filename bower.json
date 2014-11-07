@@ -1,0 +1,34 @@
+{
+  "name": "express-server",
+  "version": "0.1.0",
+  "description": "Canal de comunicación para localizar perros extraviados",
+  "main": "app.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "pet",
+    "map",
+    "dog",
+    "node",
+    "express"
+  ],
+  "authors": [
+    "Daniel Montoya",
+    "Margot",
+    "Diego",
+    "Ray"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "core-component-page": "Polymer/core-component-page#^0.4.0",
+    "polymer": "~0.4.2"
+  }
+}

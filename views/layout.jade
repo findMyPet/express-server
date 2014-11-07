@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+        title= title
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes')
+        meta(name='apple-mobile-web-app-capable', content='yes')
+        meta(name='mobile-web-app-capable', content='yes')
+        title title
+        script(src='vendor/platform/platform.js')
+        link(rel='stylesheet', type='text/css', href='/stylesheets/estilos.css')
+        link(rel='import', href='vendor/core-ajax/core-ajax.html')
+        link(rel='import', href='vendor/core-header-panel/core-header-panel.html')
+        link(rel='import', href='vendor/core-menu/core-menu.html')
+        link(rel='import', href='vendor/core-item/core-item.html')
+        link(rel='import', href='vendor/core-icon-button/core-icon-button.html')
+        link(rel='import', href='vendor/core-toolbar/core-toolbar.html')
+        link(rel='import', href='vendor/core-input/core-input.html')
+        link(rel='import', href='vendor/google-map/google-map.html')
+        link(rel='import', href='vendor/google-map/google-map-search.html')
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+    body
+        block content
