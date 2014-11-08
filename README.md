@@ -23,3 +23,7 @@ Estos son los archivos pertenecientes a la aplicación web y API REST del proyec
         npm start
 
 4. Visita localhost:3000 para visualizar la página principal.
+
+## Views y layout
+
+En el directorio `views`, se encuentran todos los archivos que se visualizarán directamente en el navegador. [Jade](http://jade-lang.com/) es el motor de plantillas del proyecto
