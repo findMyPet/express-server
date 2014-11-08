@@ -12,8 +12,8 @@ Estos son los archivos pertenecientes a la aplicación web y API REST del proyec
 2. Jala todos los archivos del repositorio remoto hacia el local:
 
         git pull github
-        
-3. Suponiendo que node y npm ya están instalados en tu ordenador, ejecuta el servidor:
+
+3. Suponiendo que node, mongodb y npm ya están instalados en tu ordenador, ejecuta el servidor:
 
         npm start
 
@@ -21,3 +21,5 @@ Estos son los archivos pertenecientes a la aplicación web y API REST del proyec
 
         npm install / sudo npm install
         npm start
+
+4. Visita localhost:3000 para visualizar la página principal.
