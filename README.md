@@ -10,11 +10,13 @@ Estos son los archivos pertenecientes a la aplicación web y API REST del proyec
         git remote add github https://github.com/findMyPet/express-server.git
 
 2. Jala todos los archivos del repositorio remoto hacia el local:
+
         git pull github
+        
 3. Suponiendo que node y npm ya están instalados en tu ordenador, ejecuta el servidor:
 
         npm start
-        
+
     si a este punto ocurren conflictos con las dependiencias ejecuta:
 
         npm install / sudo npm install
