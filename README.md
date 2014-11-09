@@ -26,4 +26,19 @@ Estos son los archivos pertenecientes a la aplicación web y API REST del proyec
 
 ## Views y layout
 
-En el directorio `views`, se encuentran todos los archivos que se visualizarán directamente en el navegador. [Jade](http://jade-lang.com/) es el motor de plantillas del proyecto
+En el directorio `views`, se encuentran todos los archivos que se visualizarán directamente en el navegador. [Jade](http://jade-lang.com/) es el motor de plantillas del proyecto.
+
+El archivo `layout.jade` contiene todos los elementos que rodean el contenido de una vista, con el fin de definir una apariencia en común. En este, por ejemplo, cargamos los estilos y scripts de Javascript necesarios, y los elementos visuales que se repetirán en toda la aplicación web; como un menú de navegación.
+
+	doctype html
+	html
+	    head
+	        title= title
+	        meta(charset='UTF-8')
+	        meta(name='viewport', content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes')
+	        link(rel='stylesheet', type='text/css', href='/stylesheets/estilos.css')
+	        script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+	    body
+	        block content
+
+`block content` representa el contenido de las vistas.
