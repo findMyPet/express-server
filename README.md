@@ -1,8 +1,6 @@
 express-server
 ==============
 
-Aplicación web y API REST del proyecto.
-=======
 Estos son los archivos pertenecientes a la aplicación web y API REST del proyecto. Constuído con Node y Express.Para poder trabajar realizar modificaciones, es necesario descargar el repositorio a tu espacio de trabajo y usar adecuadamente Git para evitar conflictos.
 
 ## Configuración del proyecto en el espacio de trabajo
