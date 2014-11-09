@@ -1,7 +1,6 @@
 express-server
 ==============
 
-<<<<<<< HEAD
 Aplicación web y API REST del proyecto.
 =======
 Estos son los archivos pertenecientes a la aplicación web y API REST del proyecto. Constuído con Node y Express.Para poder trabajar realizar modificaciones, es necesario descargar el repositorio a tu espacio de trabajo y usar adecuadamente Git para evitar conflictos.
@@ -45,4 +44,3 @@ El archivo `layout.jade` contiene todos los elementos que rodean el contenido de
 	        block content
 
 `block content` representa el contenido de las vistas.
->>>>>>> 10246ab... Explicación de 'Views y layout'
