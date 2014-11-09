@@ -4,35 +4,18 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose   = require('mongoose');
-var morgan       = require('morgan');
-var session      = require('express-session');
-var passport = require('passport');
-var flash    = require('connect-flash');
 
-var routes = require('./routes/main');
+var routes = require('./routes/index');
 var users = require('./routes/users');
-var auth = require('./routes/auth');
-var account = require('./routes/account');
 var api = require('./routes/api');
 
-mongoose.connect('mongodb://localhost/express-pet-api');
-require('./config/passport')(passport);
-
 var app = express();
+var mongoose   = require('mongoose');
+mongoose.connect('mongodb://localhost/express-pet-api');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
-app.use(morgan('dev')); // log every request to the console
-app.use(cookieParser()); // read cookies (needed for auth)
-
-// required for passport
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -45,11 +28,10 @@ app.use( '/vendor', express.static( __dirname + '/bower_components') );
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/auth', auth);
-app.use('/account', account);
 app.use('/api', api);
 
 //Models
+var Pin     = require('./app/models/pin');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
