@@ -29,6 +29,8 @@
   ],
   "dependencies": {
     "core-component-page": "Polymer/core-component-page#^0.4.0",
-    "polymer": "~0.4.2"
+    "polymer": "~0.4.2",
+    "paper-dialog": "Polymer/paper-dialog#~0.4.2",
+    "paper-button": "Polymer/paper-button#~0.4.2"
   }
 }
