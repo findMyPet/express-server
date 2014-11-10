@@ -1,19 +1,35 @@
 extends layout
 
 block content
-    body(fullbleed='fullbleed', vertical='vertical', layout='layout', unresolved='unresolved')
-        core-header-panel#core_header_panel(mode='seamed', navigation='navigation', flex='flex')
-            core-toolbar#core_toolbar
-                span= title
-            template#map(is='auto-binding')
-                core-ajax.api-ajax(auto='auto', url='http://localhost:3000/api/pins', params='{"swLn":"{{$.google_map.sw.ln}}", "swLt":"{{$.google_map.sw.lt}}", "neLn": "{{$.google_map.ne.ln}}", "neLt": "{{$.google_map.ne.lt}}"}', handleas='json', response='{{response}}')
-                google-map-search#google_map_search(map='{{map}}', query='{{$.core_input.value}}', result='{{location}}')
-                google-map#google_map(map='{{map}}', latitude='{{location.latitude}}', longitude='{{location.longitude}}', zoom='17', disabledefaultui='disableDefaultUI')
-                    template.template-ajax(repeat='{{response}}')
-                        google-map-marker(latitude='{{location[1]}}', longitude='{{location[0]}}')
-                #search-box
-                    core-field
-                        core-input#core_input(willvalidate='willvalidate', placeholder='Type something...')
-                        core-icon(icon='icons:search')
-                script(src='javascripts/ajax-polymer.js')
-                script(src='javascripts/getLocation.js')
+    template#map(is='auto-binding')
+        core-ajax.api-ajax(auto='auto', url='http://localhost:3000/api/pins', params='{"swLn":"{{$.google_map.sw.ln}}", "swLt":"{{$.google_map.sw.lt}}", "neLn": "{{$.google_map.ne.ln}}", "neLt": "{{$.google_map.ne.lt}}"}', handleas='json', response='{{response}}')
+        google-map-search#google_map_search(map='{{map}}', query='{{$.core_input.value}}', result='{{location}}')
+        google-map#google_map(map='{{map}}', latitude='{{location.latitude}}', longitude='{{location.longitude}}', zoom='17', disabledefaultui='disableDefaultUI')
+            template.template-ajax(repeat='{{response}}')
+                google-map-marker(latitude='{{location[1]}}', longitude='{{location[0]}}')
+        #search-box
+            core-field
+                core-input#core_input(willvalidate='willvalidate', placeholder='Busca una dirección o lugar...')
+                core-icon(icon='icons:search')
+        script(src='javascripts/ajax-polymer.js')
+        script(src='javascripts/getLocation.js')
+    .modal-dialog.fade.modal-lg#newReport(role='dialog', aria-labelledby='newReportlLabel', aria-hidden="true")
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal')
+                        span(aria-hidden='true') ×
+                        span.sr-only Close
+                    h2#newReportLabel.modal-title Deseo reportar
+                .modal-body
+                    .row
+                        .report.col-md-6
+                            a(href='/pins/new?type=0')
+                                span.glyphicon.glyphicon-search#search-icon
+                                h3 Perro perdido
+                        .report.col-md-6
+                            a(href='/pins/new?type=1')
+                                span.glyphicon.glyphicon-search#search-icon
+                                    span.glyphicon.glyphicon-ok#ok-icon
+                                h3 Perro encontrado
+                .modal-footer
+                    button.btn.btn-danger.btn-lg(type='button', data-dismiss='modal') Cancelar

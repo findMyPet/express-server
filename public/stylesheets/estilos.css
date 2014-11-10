@@ -8,10 +8,10 @@
       	font-family: arial;
       }
       #search-box{
-        position: absolute;
-        top: 25px;
-        left: 25px;
-        z-index: 100;
+        width: 315px;
+        margin: 10px;
+        border: 1px solid rgb(178, 173, 173);
+        z-index: 1;
         background: #fff;
       }
       #search-box core-field{
@@ -45,10 +45,9 @@
       }
       #google_map {
         width: 100%;
-        height: 100%;
+        height: 92%;
+        
         display: block;
-        left: 0px;
-        top: 0px;
         position: absolute;
       }
       #core_input {
@@ -58,4 +57,65 @@
         left: 560px;
         top: 290px;
         position: absolute;
+      }
+      .navbar-custom{
+        height: 8%;
+        margin: 0;
+        z-index: 1024;
+        overflow: hidden;
+        background-color: rgb(79, 125, 201);
+        border-radius: 0;
+      }
+      .navbar-custom a {
+        color: #fff;
+      }
+      .navbar-custom .navbar-toggle .icon-bar {
+        background-color: #fff;
+      }
+      .navbar-custom .navbar-collapse{
+        background-color: rgb(79, 125, 201);
+      }
+      .btn-custom{
+        background: none;
+        border: 1px solid #fff;
+        color: #fff;
+      }
+      .btn-custom:focus{
+        background: none;
+        border: 1px solid #fff;
+        color: #fff;
+      }
+      .add-report{
+        font-size: 20px;
+        margin-right: 20px !important;
+      }
+      #newReport .modal-header{
+        border: none;
+      }
+      #newReport .modal-body span{
+        font-size: 150px;
+      }
+      #ok-icon{
+        color: #5cb85c;
+      }
+      #search-icon{
+        color:#000;
+      }
+      #newReportLabel{
+        font-size: 50px;
+        text-align: center;
+      }
+      #newReport #search-icon{
+        
+      }
+      #newReport #ok-icon{
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .report{
+        text-align: center;
+      }
+      .report a{
+        color: #000;
       }
