@@ -5,8 +5,10 @@ var Pin     = require('../app/models/pin');
 
 router.post('/pins', function(req, res) {
 	var pin = Pin();
-	pin.location.latitude = req.body.latitude;
-	pin.location.longitude = req.body.longitude;
+	pin.location = [Number(req.body.longitude), Number(req.body.latitude)];
+	pin.sex = req.body.sex;
+	pin.breed = req.body.breed;
+	pin.dogSize = req.body.dogSize;
 	pin.save(function(err) {
 		if (err)
 			res.send(err);

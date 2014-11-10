@@ -119,3 +119,15 @@
       .report a{
         color: #000;
       }
+      #new_pin_map{
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+      }
+      #new-pin-form{
+        display: none;
+        position: absolute;
+        top: 40%;
+        margin-top: 50px;
+      }

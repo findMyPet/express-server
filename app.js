@@ -15,6 +15,7 @@ var users = require('./routes/users');
 var auth = require('./routes/auth');
 var account = require('./routes/account');
 var api = require('./routes/api');
+var pins = require('./routes/pins');
 
 mongoose.connect('mongodb://localhost/express-pet-api');
 require('./config/passport')(passport);
@@ -41,13 +42,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use( '/vendor', express.static( __dirname + '/bower_components') );
+app.use( '/vendor', express.static( path.join(__dirname, 'bower_components')) );
 
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/account', account);
 app.use('/api', api);
+app.use('/pins', pins);
 
 //Models
 

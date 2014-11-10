@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        title= title
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes')
+        meta(name='apple-mobile-web-app-capable', content='yes')
+        meta(name='mobile-web-app-capable', content='yes')
+        title title
+        script(src='/vendor/platform/platform.js')
+        link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.css')
+        link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css')
+        link(rel='stylesheet', type='text/css', href='/stylesheets/estilos.css')
+        link(rel='import', href='/vendor/core-ajax/core-ajax.html')
+        link(rel='import', href='/vendor/google-map/google-map.html')
+        link(rel='import', href='/vendor/google-map/google-map-search.html')
+        link(rel='import', href='/vendor/paper-input/paper-input.html')
+        link(rel='import', href='/vendor/polymer/polymer.html')
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+        script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')
+    body(fullbleed='fullbleed', vertical='vertical', layout='layout', unresolved='unresolved')
+        block content
+    script(src='/javascripts/getLocation.js')
+    script(src='/javascripts/ajax-polymer.js')

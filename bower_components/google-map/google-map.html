@@ -669,6 +669,10 @@ Fired when the Maps API has fully loaded.
       }.bind(this));
 
       google.maps.event.addListener(this.map, 'zoom_changed', function() {
+        var center = this.map.getCenter();
+        console.log(this.map.getCenter());
+        google.maps.event.trigger(this.map, "resize");
+        this.map.setCenter(center); 
         this.zoom = this.map.getZoom();
       }.bind(this));
 
@@ -683,7 +687,7 @@ Fired when the Maps API has fully loaded.
           "ln": bounds.getSouthWest().B,
           "lt": bounds.getSouthWest().k
         }
-      }.bind(this));
+      }.bind(this));    
     }
 
   });
