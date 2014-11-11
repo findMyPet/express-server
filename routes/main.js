@@ -8,7 +8,7 @@ router.use(function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
-router.get('/', isLoggedIn, function(req, res) {
+router.get('/', function(req, res) {
 	//res.json({ message: 'hooray! welcome to our api!' });
   	res.render('index', { title: 'FindMyPet!', user : req.user });
 });
