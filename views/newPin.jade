@@ -2,6 +2,7 @@ extends noNav
 
 block content
     //cambiar nombres sin guion bajo
+    script(src='/javascripts/initMarker.js')
     nav#map-navbar.navbar.navbar-fixed-bottom.navbar-custom(role='navigation')
         .container-fluid
             .navbar-header
@@ -13,7 +14,8 @@ block content
         core-ajax.api-ajax(auto='auto', url='http://localhost:3000/api/pins', params='{"swLn":"{{$.new_pin_map.sw.ln}}", "swLt":"{{$.new_pin_map.sw.lt}}", "neLn": "{{$.new_pin_map.ne.ln}}", "neLt": "{{$.new_pin_map.ne.lt}}"}', handleas='json', response='{{response}}')
         google-map-search#google_map_search(map='{{map}}', query='{{$.core_input.value}}', result='{{location}}')
         google-map#new_pin_map(map='{{map}}', latitude='{{location.latitude}}', longitude='{{location.longitude}}', zoom='17', disabledefaultui='disableDefaultUI')
-            google-map-marker(latitude='{{location.latitude}}', longitude='{{location.longitude}}')
+            google-map-marker#new_pin_marker(draggable='true')
+            div lala {{$newPinMarker.latitude}}
             template.template-ajax(repeat='{{response}}')
                 google-map-marker(latitude='{{location[1]}}', longitude='{{location[0]}}')
         #search-box

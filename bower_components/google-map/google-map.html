@@ -121,6 +121,8 @@ child of `google-map`.
 
       updatePosition: function() {
         if (this.marker && this.latitude != null && this.longitude != null) {
+          console.log('updatePosition|');
+          this.map.setCenter(this.marker.getPosition());
           this.marker.setPosition({
             lat: parseFloat(this.latitude),
             lng: parseFloat(this.longitude)
@@ -497,8 +499,7 @@ Fired when the Maps API has fully loaded.
 
     updateMarkers: function() {
       this.markers = Array.prototype.slice.call(
-          this.$.markers.getDistributedNodes());
-
+        this.$.markers.getDistributedNodes());
       if (this.centerMarker) {
         this.markers.push(this.centerMarker);
       }
@@ -537,6 +538,7 @@ Fired when the Maps API has fully loaded.
     resize: function() {
       if (this.map) {
         google.maps.event.trigger(this.map, 'resize');
+        console.log("cambio")
         this.updateCenter();
       }
     },
@@ -670,7 +672,6 @@ Fired when the Maps API has fully loaded.
 
       google.maps.event.addListener(this.map, 'zoom_changed', function() {
         var center = this.map.getCenter();
-        console.log(this.map.getCenter());
         google.maps.event.trigger(this.map, "resize");
         this.map.setCenter(center); 
         this.zoom = this.map.getZoom();
@@ -687,7 +688,15 @@ Fired when the Maps API has fully loaded.
           "ln": bounds.getSouthWest().B,
           "lt": bounds.getSouthWest().k
         }
-      }.bind(this));    
+       
+      }.bind(this));
+      //Detecta cuando el documento cambia de tamaño y centra el mapa hacia el marcador
+      window.addEventListener("resize", function(){
+        newPinMarker = $('#new_pin_marker');
+        if (newPinMarker){
+          this.map.setCenter({lat: Number(newPinMarker.attr('latitude')), lng: Number(newPinMarker.attr('longitude'))});
+        }
+      }.bind(this));
     }
 
   });
