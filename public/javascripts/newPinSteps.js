@@ -5,10 +5,10 @@ function nextStep() {
 	$('#new-pin-form').toggle();
 	$('#search-box').toggle();
 	$( "#new_pin_map" ).attr( "onclick", "prevStep()" );
-	var mapLongitude = $('#map-longitude').value;
-	var mapLatitude = $('#map-latitude').value;
-	$('#new-pin-form').attr('longitude', mapLongitude); 
-	$('#new-pin-form').attr('latitude', mapLatitude); 
+	var newPinMarker = $('#new_pin_marker');
+	$('#map-longitude').val(newPinMarker.attr('longitude'));
+	console.log(newPinMarker.attr('longitude'));
+	$('#map-latitude').val(newPinMarker.attr('latitude')); 
 	map.zoom = 18; 
 
 }
