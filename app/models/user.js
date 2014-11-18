@@ -7,6 +7,7 @@ var userSchema = mongoose.Schema({
     local            : {
         email        : String,
         password     : String,
+        token: String
     },
     facebook         : {
         id           : String,
@@ -25,8 +26,7 @@ var userSchema = mongoose.Schema({
         token        : String,
         email        : String,
         name         : String
-    }
-
+    },
 });
 
 // methods ======================
@@ -38,6 +38,11 @@ userSchema.methods.generateHash = function(password) {
 // checking if password is valid
 userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
+};
+userSchema.methods.generateToken = function(){
+    var current_date = (new Date()).valueOf().toString();
+    var random = Math.random().toString();
+    return bcrypt.hashSync(current_date+random, bcrypt.genSaltSync(8), null);
 };
 
 // create the model for users and expose it to our app

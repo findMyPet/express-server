@@ -1,4 +1,5 @@
-var LocalStrategy   = require('passport-local').Strategy;
+var LocalStrategy   = require('passport-local').Strategy
+, BearerStrategy = require('passport-http-bearer').Strategy;
 
 // load up the user model
 var User = require('../app/models/user');
@@ -59,6 +60,7 @@ module.exports = function(passport) {
                 // set the user's local credentials
                 newUser.local.email    = email;
                 newUser.local.password = newUser.generateHash(password);
+                newUser.local.token = newUser.generateToken();
 
                 // save the user
                 newUser.save(function(err) {
@@ -86,5 +88,14 @@ module.exports = function(passport) {
 
         });
     }));
+    passport.use(new BearerStrategy(
+        function(token, done) {
+            User.findOne({ token: token }, function (err, user) {
+                if (err) { return done(err); }
+                if (!user) { return done(null, false); }
+                return done(null, user, { scope: 'all' });
+            });
+        }
+    ));
 
 };
