@@ -24,9 +24,23 @@ block content
                 core-icon(icon='icons:search')
         script(src='/javascripts/newPinSteps.js')
         form#new-pin-form(action='/pins', method='post', role='form')
+            input#map-longitude(type='hidden', name='longitude')
+            input#map-latitude(type='hidden', name='latitude')
             .container
                 .row
                     .col-md-8.col-md-offset-3
+                        //TODO: Las razas deben venir de la base de datos
+                        select.form-control(name='breed')
+                            option(value='Chihuahua') Chihuahua
+                            option(value='Husky') Husky Siberiano
+                            option(value='Pug') Pug
+                        .form-group
+                            label.radio-inline
+                                input(type='radio', name='age', value='puppy')
+                                | Cachorro
+                            label.radio-inline
+                                input(type='radio', name='age', value='mature')
+                                | Adulto
                         .form-group
                             label.radio-inline
                                 input(type='radio', name='sex', value='male')
@@ -34,17 +48,7 @@ block content
                             label.radio-inline
                                 input(type='radio', name='sex', value='female')
                                 | Hembra
-                            label.radio-inline
-                                input(type='radio', name='sex', value='unknown')
-                                | ¡No tengo idea!
-                        //TODO: Las razas deben venir de la base de datos
-                        select.form-control(name='breed')
-                            option(value='Chihuahua') Chihuahua
-                            option(value='Husky') Husky Siberiano
-                            option(value='Pug') Pug
                         .form-group
-                            input#map-longitude(type='hidden', name='longitude')
-                            input#map-latitude(type='hidden', name='latitude')
                             label.radio-inline
                                 input(type='radio', name='dogSize', value='big')
                                 | Grande
@@ -55,7 +59,7 @@ block content
                                 input(type='radio', name='dogSize', value='small')
                                 | Pequeño
                         label(for='description')
-                            | Describe su apariencia
+                            | Describe su apariencia en 140 caracteres
                         textarea.form-control(rows='3' name='description')
                         .form-group
                             input.btn.btn-default(type='submit')
