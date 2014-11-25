@@ -690,7 +690,7 @@ Fired when the Maps API has fully loaded.
       }.bind(this));
       //Detecta cuando el documento cambia de tamaño y centra el mapa hacia el marcador
       window.addEventListener("resize", function(){
-        newPinMarker = $('#new_pin_marker');
+        newPinMarker = document.getElementById('new_pin_marker');
         if (newPinMarker){
           this.map.setCenter({lat: Number(newPinMarker.attr('latitude')), lng: Number(newPinMarker.attr('longitude'))});
         }
