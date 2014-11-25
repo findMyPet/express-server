@@ -538,7 +538,6 @@ Fired when the Maps API has fully loaded.
     resize: function() {
       if (this.map) {
         google.maps.event.trigger(this.map, 'resize');
-        console.log("cambio")
         this.updateCenter();
       }
     },
@@ -672,7 +671,6 @@ Fired when the Maps API has fully loaded.
 
       google.maps.event.addListener(this.map, 'zoom_changed', function() {
         var center = this.map.getCenter();
-        google.maps.event.trigger(this.map, "resize");
         this.map.setCenter(center); 
         this.zoom = this.map.getZoom();
       }.bind(this));
