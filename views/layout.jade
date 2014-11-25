@@ -99,7 +99,7 @@ html(ng-app = "FindMyPet")
                         span.glyphicon.glyphicon-plus
             div 
                 template#map(is='auto-binding')
-                    core-ajax.api-ajax(auto='auto', url='http://localhost:3000/api/pins', params='{"swLn":"{{$.google_map.sw.ln}}", "swLt":"{{$.google_map.sw.lt}}", "neLn": "{{$.google_map.ne.ln}}", "neLt": "{{$.google_map.ne.lt}}"}', handleas='json', response='{{response}}')
+                    core-ajax.api-ajax(auto='auto', url='https://woofind.herokuapp.com/api/pins', params='{"swLn":"{{$.google_map.sw.ln}}", "swLt":"{{$.google_map.sw.lt}}", "neLn": "{{$.google_map.ne.ln}}", "neLt": "{{$.google_map.ne.lt}}"}', handleas='json', response='{{response}}')
                     google-map-search#google_map_search(map='{{map}}', query='{{$.core_input.value}}', result='{{location}}')
                     google-map#google_map(map='{{map}}', latitude='{{location.latitude}}', longitude='{{location.longitude}}', zoom='17', disabledefaultui='disableDefaultUI')
                         template.template-ajax(repeat='{{response}}')
