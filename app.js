@@ -17,7 +17,7 @@ var account = require('./routes/account');
 var api = require('./routes/api');
 var pins = require('./routes/pins');
 
-mongoose.connect('mongodb://localhost/express-pet-api');
+mongoose.connect(process.env.MONGOHQ_URL);
 require('./config/passport')(passport);
 
 var app = express();
