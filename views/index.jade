@@ -1,14 +1,14 @@
 extends layout
 
 block content
-div 
-    template#map(is='auto-binding')
-        core-ajax.api-ajax(auto='auto', url='https://woofind.herokuapp.com/api/pins', params='{"swLn":"{{$.google_map.sw.ln}}", "swLt":"{{$.google_map.sw.lt}}", "neLn": "{{$.google_map.ne.ln}}", "neLt": "{{$.google_map.ne.lt}}"}', handleas='json', response='{{response}}')
-        google-map-search#google_map_search(map='{{map}}', query='{{$.core_input.value}}', result='{{location}}')
-        google-map#google_map(map='{{map}}', latitude='{{location.latitude}}', longitude='{{location.longitude}}', zoom='17', disabledefaultui='disableDefaultUI')
-            template.template-ajax(repeat='{{response}}')
-                google-map-marker(latitude='{{location[1]}}', longitude='{{location[0]}}')
-            #search-box
-                core-field
-                    core-input#core_input(willvalidate='willvalidate', placeholder='Busca una dirección o lugar...')
-                    core-icon(icon='icons:search')
+    div 
+        template#map(is='auto-binding')
+            core-ajax.api-ajax(auto='auto', url='https://woofind.herokuapp.com/api/pins', params='{"swLn":"{{$.google_map.sw.ln}}", "swLt":"{{$.google_map.sw.lt}}", "neLn": "{{$.google_map.ne.ln}}", "neLt": "{{$.google_map.ne.lt}}"}', handleas='json', response='{{response}}')
+            google-map-search#google_map_search(map='{{map}}', query='{{$.core_input.value}}', result='{{location}}')
+            google-map#google_map(map='{{map}}', latitude='{{location.latitude}}', longitude='{{location.longitude}}', zoom='17', disabledefaultui='disableDefaultUI')
+                template.template-ajax(repeat='{{response}}')
+                    google-map-marker(latitude='{{location[1]}}', longitude='{{location[0]}}')
+                #search-box
+                    core-field
+                        core-input#core_input(willvalidate='willvalidate', placeholder='Busca una dirección o lugar...')
+                        core-icon(icon='icons:search')
