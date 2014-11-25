@@ -17,6 +17,8 @@ router.post('/', function(req, res) {
     pin.sex = req.body.sex;
     pin.breed = req.body.breed;
     pin.dogSize = req.body.dogSize;
+    pin.age = req.body.age;
+    pin.description = req.body.description;
     pin.save(function(err) {
         if (err)
             res.send(err);

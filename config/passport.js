@@ -40,7 +40,6 @@ module.exports = function(passport) {
         // asynchronous
         // User.findOne wont fire unless data is sent back
         process.nextTick(function() {
-
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
         User.findOne({ 'local.email' :  email }, function(err, user) {
@@ -90,7 +89,7 @@ module.exports = function(passport) {
     }));
     passport.use(new BearerStrategy(
         function(token, done) {
-            User.findOne({ token: token }, function (err, user) {
+            User.findOne({ "local.token": token }, function (err, user) {
                 if (err) { return done(err); }
                 if (!user) { return done(null, false); }
                 return done(null, user, { scope: 'all' });
