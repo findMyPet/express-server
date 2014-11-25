@@ -3,7 +3,7 @@ extends layout
 block content
 
 
-  
+//
   .modal-dialog.fade.modal-lg#newReport(role='dialog', aria-labelledby='newReportlLabel', aria-hidden="true")
       .modal-content
         .modal-header
@@ -63,13 +63,13 @@ block content
             .address Mi casa es tu casa 
             core-icon(icon = 'more-vert')
         div(ng-switch-when = 'perdidos')
-          h1 Perdidos
-          core-item.foto(src = 'imagenes/panfilo.png')
-            div(flex)
-            .name Panfilo
-            .descripcionCorta  Gordito pero sexy! 
-            .address Mi casa es tu casa 
-            core-icon(icon = 'more-vert')
+        h1 Perdidos
+        core-item.foto(src = 'imagenes/panfilo.png')
+          div(flex)
+          .name Panfilo
+          .descripcionCorta  Gordito pero sexy! 
+          .address Mi casa es tu casa 
+          core-icon(icon = 'more-vert')
     div(flex)
       template#map(is='auto-binding')
         core-ajax.api-ajax(auto='auto', url='http://localhost:3000/api/pins', params='{"swLn":"{{$.google_map.sw.ln}}", "swLt":"{{$.google_map.sw.lt}}", "neLn": "{{$.google_map.ne.ln}}", "neLt": "{{$.google_map.ne.lt}}"}', handleas='json', response='{{response}}')
@@ -82,4 +82,4 @@ block content
             core-input#core_input(willvalidate='willvalidate', placeholder='Busca una dirección o lugar...')
             core-icon(icon='icons:search')
         script(src='javascripts/ajax-polymer.js')
-        script(src='javascripts/getLocation.js')
+        script(src='javascripts/getLocation.js')-->

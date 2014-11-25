@@ -28,6 +28,7 @@ html(ng-app = "FindMyPet")
         link(rel='import', href='/vendor/paper-dialog/paper-dialog-transition.html')
         link(rel='import', href='/vendor/paper-button/paper-button.html')
         link(rel='import', href='/vendor/paper-input/paper-input.html')
+        link(rel='import', href='/vendor/core-scaffold/core-scaffold.html')
         link(rel='import', href='/vendor/polymer/polymer.html')
         link(rel='import', href='/vendor/paper-tabs/paper-tabs.html')
 
@@ -36,16 +37,50 @@ html(ng-app = "FindMyPet")
 
         script(src = '/javascripts/appo.js')
     body(fullbleed='fullbleed', vertical='vertical', layout='layout', unresolved='unresolved' ng-controller = "Main")
-        nav.navbar.navbar-custom(role='navigation')
-            .container-fluid 
-                .navbar-header
-                    button.navbar-toggle(data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-                        span.sr-only Toggle navigation
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                    a.navbar-brand(href='/') Find my pet!
-                #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        core-scaffold
+            core-header-panel(navigation flex mode = 'seamed')
+                core-toolbar(style = 'background-color: #526E9C;')
+                core-menu(theme = 'core-light-theme')
+                    paper-tabs( selected = '0' )
+                        paper-tab( ng-click = 'list = "todos"' ) Todos
+                            a(
+                                center-center
+                                layout
+                            )
+                        paper-tab( ng-click = 'list = "perdidos"' ) Perdidos
+                            a(
+                                center-center
+                                layout
+                            )
+                        paper-tab( ng-click = 'list = "encontrados"' ) Encontrados
+                            a(
+                                center-center
+                                layout
+                            )
+                    div( ng-switch = 'list' )
+                        div( ng-switch-when = 'todos')
+                            h1 Todos
+                            core-item.foto( src = 'imagenes/panfilo.png')
+                                div(flex)
+                                    .name Panfilo
+                                    .descripcionCorta  Gordito pero sexy! 
+                                    .address Mi casa es tu casa 
+                        div( ng-switch-when = 'encontrados')
+                            h1 Encontrados
+                            core-item.foto( src = '../panfilo.png')
+                                div(flex)
+                                    .name Panfilo
+                                    .descripcionCorta  Gordito pero sexy! 
+                                    .address Mi casa es tu casa 
+                        div(ng-switch-when = 'perdidos')
+                            h1 Perdidos
+                            core-item.foto(src = 'imagenes/panfilo.png')
+                                div(flex)
+                                    .name Panfilo
+                                    .descripcionCorta  Gordito pero sexy! 
+                                    .address Mi casa es tu casa 
+            div(tool flex) FindMyPet
+                #bs-example-navbar-collapse-1.collapse.navbar-collapse(style = 'margin-top: -33px;')
                     -if (user){
                         button.btn.btn-custom.navbar-btn.navbar-right.dropdown-toggle= user.local.email
                             span.caret
@@ -59,4 +94,18 @@ html(ng-app = "FindMyPet")
                     -}
                     a.add-report.navbar-text.navbar-right(data-toggle="modal", data-target="#newReport")
                         span.glyphicon.glyphicon-plus
+            div 
+                template#map(is='auto-binding')
+                    core-ajax.api-ajax(auto='auto', url='http://localhost:3000/api/pins', params='{"swLn":"{{$.google_map.sw.ln}}", "swLt":"{{$.google_map.sw.lt}}", "neLn": "{{$.google_map.ne.ln}}", "neLt": "{{$.google_map.ne.lt}}"}', handleas='json', response='{{response}}')
+                    google-map-search#google_map_search(map='{{map}}', query='{{$.core_input.value}}', result='{{location}}')
+                    google-map#google_map(map='{{map}}', latitude='{{location.latitude}}', longitude='{{location.longitude}}', zoom='17', disabledefaultui='disableDefaultUI')
+                        template.template-ajax(repeat='{{response}}')
+                            google-map-marker(latitude='{{location[1]}}', longitude='{{location[0]}}')
+                    #search-box
+                        core-field
+                            core-input#core_input(willvalidate='willvalidate', placeholder='Busca una dirección o lugar...')
+                            core-icon(icon='icons:search')
+                    script(src='javascripts/ajax-polymer.js')
+                    script(src='javascripts/getLocation.js')
+       
         block content
