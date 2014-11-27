@@ -1,7 +1,5 @@
 var express = require('express');
-var underscore = require('underscore');
 var passport = require('passport');
-var Asearch = require('asearch');
 var router = express.Router();
 var Pin     = require('../app/models/pin');
 var User     = require('../app/models/user');
@@ -19,6 +17,14 @@ router.post('/pins', function(req, res) {
             res.status(400).json(err);
 
         res.status(201).json({ message: 'Pin created!', pin : pin});
+    });
+});
+router.get('/pins/all', function(req, res) {
+    Pin.find()
+        .exec(function(err, pins) {
+        if (err)
+            res.send("Error:"+err);
+        res.json(pins);
     });
 });
 router.put('/pins/:id', function(req, res) {

@@ -17,7 +17,7 @@ var account = require('./routes/account');
 var api = require('./routes/api');
 var pins = require('./routes/pins');
 
-mongoose.connect(process.env.MONGOHQ_URL);
+mongoose.connect('mongodb://localhost:27017');
 require('./config/passport')(passport);
 
 var app = express();
